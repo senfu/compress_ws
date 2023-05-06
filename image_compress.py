@@ -14,7 +14,7 @@ pub2 = rospy.Publisher("/compress/depth", Image, queue_size=1000)
 def image_callback(image_message):
     cv_image = bridge.imgmsg_to_cv2(image_message, desired_encoding="rgb8")
     src_len = cv_image.flatten().shape[0]
-    encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 100]
+    encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 95]
     _, encimg = cv2.imencode('.jpg', cv_image, encode_param)
     array = encimg.flatten().tolist()
     dest_len = len(array)
